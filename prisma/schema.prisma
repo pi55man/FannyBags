@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// Artist / User
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  avatar    String?
+  location  String?
+  badges    String   // Stored as JSON string
+  createdAt DateTime @default(now())
+
+  wallet    Wallet?
+  songs     Song[]
+}
+
+// Wallet
+model Wallet {
+  id               String   @id @default(uuid())
+  availableBalance Float    @default(0)
+  pendingPayouts   Float    @default(0)
+  lifetimeEarnings Float    @default(0)
+  
+  userId           String   @unique
+  user             User     @relation(fields: [userId], references: [id])
+  
+  transactions     Transaction[]
+}
+
+// Transactions
+model Transaction {
+  id        String   @id @default(uuid())
+  amount    Float
+  type      String   // Deposit, Payout, etc.
+  status    String   // Completed, Pending
+  date      DateTime @default(now())
+  
+  walletId  String
+  wallet    Wallet   @relation(fields: [walletId], references: [id])
+}
+
+// Songs / Campaigns
+model Song {
+  id              String   @id @default(uuid())
+  title           String
+  artistId        String
+  artist          User     @relation(fields: [artistId], references: [id])
+  
+  status          String   // Live, Funded, Draft
+  khapeetarStatus String   // Pending, Assigned
+  khapeetarName   String?
+  fundsRaised     Float    @default(0)
+  fundingSource   String   @default("Fan") // Fan, Self
+  
+  releaseStatus   String?  // Pending, Completed
+  
+  streams         Int      @default(0)
+  revenue         Float    @default(0)
+  paidOut         Float    @default(0)
+
+  createdAt       DateTime @default(now())
+}
