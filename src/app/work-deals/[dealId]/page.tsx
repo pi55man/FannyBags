@@ -73,7 +73,7 @@ const INITIAL_TEAM: Khapeetar[] = [
     { 
         id: 'k1', 
         name: 'Rohit M.', 
-        avatar: '/avatars/aarav.png', 
+        avatar: '/app/avatars/aarav.png', 
         role: 'Director / Editor', 
         assignedBudget: '₹ 50,000', 
         permissions: ['Files', 'Comm', 'Deliverables'] 
@@ -88,8 +88,8 @@ const FILES: FileItem[] = [
 ];
 
 const MESSAGES: Message[] = [
-    { id: 'm1', sender: 'Artist', name: 'Turning Point', avatar: '/avatars/artist.png', text: 'Hi, just uploaded the final track, please check.', timestamp: '10:00 AM', isMe: true },
-    { id: 'm2', sender: 'Khapeetar', name: 'Rohit M.', avatar: '/avatars/aarav.png', text: 'Got it, thanks. We\'ll start production tomorrow.', timestamp: '10:05 AM', isMe: false },
+    { id: 'm1', sender: 'Artist', name: 'Turning Point', avatar: '/app/avatars/sahil.png', text: 'Hi, just uploaded the final track, please check.', timestamp: '10:00 AM', isMe: true },
+    { id: 'm2', sender: 'Khapeetar', name: 'Rohit M.', avatar: '/app/avatars/aarav.png', text: 'Got it, thanks. We\'ll start production tomorrow.', timestamp: '10:05 AM', isMe: false },
 ];
 
 export default function DealDetailsPage() {
@@ -111,7 +111,7 @@ export default function DealDetailsPage() {
         const newMember: Khapeetar = {
             id: `k${Date.now()}`,
             name: 'Shreya Singh', // Mock selected
-            avatar: '/avatars/riya.png',
+            avatar: '/app/avatars/riya.png',
             role: 'Colorist',
             assignedBudget: `₹ ${newBudget}`,
             permissions: ['Files', 'Comm']

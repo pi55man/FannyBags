@@ -13,7 +13,7 @@ const KHAPEETARS = [
     rating: 4.7,
     price: '₹40,000',
     details: 'Music Video Director',
-    image: '/avatars/aarav.png',
+    image: '/app/avatars/aarav.png',
     bgColor: 'bg-[#bfdbfe]', // Light Blue
     progress: 75,
     metric: 'From ₹40,000',
@@ -26,7 +26,7 @@ const KHAPEETARS = [
     rating: 4.5,
     price: '₹25,000',
     details: 'Release Marketing Specialist',
-    image: '/avatars/riya.png',
+    image: '/app/avatars/riya.png',
     bgColor: 'bg-[#fbcfe8]', // Pink
     progress: 60,
     metric: 'From ₹25,000',
@@ -39,7 +39,7 @@ const KHAPEETARS = [
     rating: 4.9,
     price: '₹15,000',
     details: 'Mixing Engineer',
-    image: '/avatars/nikhil.png',
+    image: '/app/avatars/nikhil.png',
     bgColor: 'bg-[#fde68a]', // Yellow
     progress: 90,
     metric: 'From ₹15,000',
@@ -52,7 +52,7 @@ const KHAPEETARS = [
     rating: 4.4,
     price: '₹20,000',
     details: 'Playlist Manager',
-    image: '/avatars/sahil.png',
+    image: '/app/avatars/sahil.png',
     bgColor: 'bg-[#bfdbfe]', // Light Blue
     progress: 45,
     metric: 'From ₹20,000',
@@ -126,6 +126,7 @@ function KhapeetarCard({ khapeetar, index, onShowProfile }: { khapeetar: typeof 
 
 // --- Types ---
 type ViewState = 'grid' | 'profile';
+type FilterTab = 'Music Video' | 'Marketing' | 'Audio' | 'Promo';
 
 // --- Profile View Component ---
 function ProfileView({ khapeetar, onBack }: { khapeetar: typeof KHAPEETARS[0]; onBack: () => void }) {
@@ -333,6 +334,7 @@ function ProfileView({ khapeetar, onBack }: { khapeetar: typeof KHAPEETARS[0]; o
 export default function Dashboard() {
   const [view, setView] = useState<ViewState>('grid');
   const [selectedProfile, setSelectedProfile] = useState<typeof KHAPEETARS[0] | null>(null);
+  const [activeFilter, setActiveFilter] = useState<FilterTab>('Music Video');
 
   const handleShowProfile = (profile: typeof KHAPEETARS[0]) => {
     setSelectedProfile(profile);
@@ -364,11 +366,16 @@ export default function Dashboard() {
           {/* Filters */}
           <div className="mb-8 flex flex-col gap-6">
             <div className="flex gap-3">
-              <button className="rounded-[10px] bg-[#1e293b] border border-blue-500/50 px-5 py-2 text-[13px] font-medium text-white shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all">
-                Music Video
-              </button>
-              {['Marketing', 'Audio', 'Promo'].map((tab) => (
-                <button key={tab} className="rounded-[10px] border border-white/10 bg-transparent px-5 py-2 text-[13px] font-medium text-gray-400 hover:bg-white/5 transition-colors">
+              {(['Music Video', 'Marketing', 'Audio', 'Promo'] as FilterTab[]).map((tab) => (
+                <button 
+                  key={tab} 
+                  onClick={() => setActiveFilter(tab)}
+                  className={`rounded-[10px] px-5 py-2 text-[13px] font-medium transition-all ${
+                    activeFilter === tab 
+                      ? 'bg-[#1e293b] border border-blue-500/50 text-white shadow-[0_0_15px_rgba(59,130,246,0.3)]' 
+                      : 'border border-white/10 bg-transparent text-gray-400 hover:bg-white/5'
+                  }`}
+                >
                   {tab}
                 </button>
               ))}

@@ -11,7 +11,7 @@ export async function GET() {
             budget: '₹30,000',
             timeline: '14 days',
             notes: 'Includes ad setup, creating content, seeding and reports.',
-            avatar: '/avatars/aarav.png', // Correct existing file
+            avatar: '/app/avatars/aarav.png', // Correct existing file
             isFeatured: true
         },
         {
@@ -22,7 +22,7 @@ export async function GET() {
             budget: '₹25,000',
             timeline: '20 days',
             notes: 'Strategic rollout plan...',
-            avatar: '/avatars/riya.png', // Correct existing file
+            avatar: '/app/avatars/riya.png', // Correct existing file
             isFeatured: false
         }
     ];

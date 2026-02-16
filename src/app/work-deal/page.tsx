@@ -137,10 +137,10 @@ export default function WorkDealPage() {
                     // Mock Fallback - COMMENTED OUT
                     /* setOffers([
                         {
-                            id: 'o1', khapeetarName: 'Rohit Malhotra', service: 'Release Marketing', location: 'Pune, India', budget: '₹30,000', timeline: '14 days', notes: 'Includes ad setup...', avatar: '/avatars/aarav.png', isFeatured: true
+                            id: 'o1', khapeetarName: 'Rohit Malhotra', service: 'Release Marketing', location: 'Pune, India', budget: '₹30,000', timeline: '14 days', notes: 'Includes ad setup...', avatar: '/app/avatars/aarav.png', isFeatured: true
                         },
                         {
-                            id: 'o2', khapeetarName: 'Shreya Singh', service: 'Release Marketing', location: 'Chandigarh, India', budget: '₹25,000', timeline: '20 days', avatar: '/avatars/riya.png', isFeatured: false
+                            id: 'o2', khapeetarName: 'Shreya Singh', service: 'Release Marketing', location: 'Chandigarh, India', budget: '₹25,000', timeline: '20 days', avatar: '/app/avatars/riya.png', isFeatured: false
                         }
                     ]); */
                 }
