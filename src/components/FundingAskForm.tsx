@@ -281,7 +281,7 @@ export default function FundingAskForm({ campaignId }: FundingProps) {
                         ))}
                     </div>
                     <div className="mt-4 flex justify-end">
-                        <span={clsx("text-xs font-mono", totalBudget === 100 ? "text-green-400" : "text-yellow-500")}>
+                        <span className={clsx("text-xs font-mono", totalBudget === 100 ? "text-green-400" : "text-yellow-500")}>
                         Total: {totalBudget}% {totalBudget !== 100 && "(Should ideally be 100%)"}
                     </span>
                 </div>
